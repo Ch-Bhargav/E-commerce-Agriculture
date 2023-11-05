@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div th:include="navbar"></div>
+
+<br><br>
+<hr>
+<!-- Add Product Form -->
+<div class="container mt-5">
+  <form th:action="@{/saveProduct}" method="post" th:object="${product}" enctype="multipart/form-data">
+    <div class="form-group">
+      <input type="text" class="form-control" th:field="*{name}" placeholder="Product Name" required>
+    </div>
+    <div class="form-group">
+      <input type="number" class="form-control" th:field="*{price}" placeholder="Price" required>
+    </div>
+    <div class="form-group">
+      <select class="form-control" th:field="*{category}" required>
+        <option value="Vegetables">Vegetables</option>
+        <option value="Fruits">Fruits</option>
+        <option value="Dairy Products">Dairy Products</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" rows="4" th:field="*{description}" placeholder="Description" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Product</button>
+  </form>
+</div>
+
+<!-- Footer section -->
+<div th:include="footer"></div>
+
+</body>
+</html>

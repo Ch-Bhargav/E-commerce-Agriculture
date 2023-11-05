@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Page</title>
+</head>
+<body>
+    <h1>Payment Page</h1>
+
+    <h2>Your Cart Items</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cartItem : ${cartItems}">
+                <td th:text="${cartItem.productName}"></td>
+                <td th:text="${cartItem.price}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Total Price: <span th:text="${totalPrice}"></span></p>
+
+    <!-- Add a form for payment processing if needed -->
+    
+</body>
+</html>

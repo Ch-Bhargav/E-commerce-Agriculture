@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>User Profile</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #F5EEC8 !important;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+
+      /* Styles for the fixed navbar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        /*box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);*/
+        z-index: 100;
+        width: 100%; /* Set width to 100% to span horizontally */
+      }
+
+      /* Styles for the content below the navbar */
+      #main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        margin-top: 80px; /* Adjust margin based on navbar height */
+      }
+
+      #profile-container {
+        width: 600px;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #555843;
+      }
+
+      #editButton {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+
+      #editButton:hover {
+        background-color: #0056b3;
+      }
+
+      #editForm {
+        display: none;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        background-color: #f7f7f7;
+      }
+
+      /* Add styles for the Save button */
+      button[type="submit"] {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar" th:include="navbar"></div>
+    <div id="main-container">
+      <div id="profile-container" th:if="${user}">
+        <h1>User Profile</h1>
+        <table>
+          <tr>
+            <th>Field</th>
+            <th>Value</th>
+          </tr>
+          <tr>
+            <td><strong>Username:</strong></td>
+            <td><span id="username" th:text="${user.username}"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Email:</strong></td>
+            <td><span id="email" th:text="${user.email}"></span></td>
+          </tr>
+          <tr>
+            <td><strong>Password:</strong></td>
+            <td><span id="password" th:text="${user.password}"></span></td>
+          </tr>
+        </table>
+        <button id="editButton">Edit</button>
+      </div>
+    </div>
+    <form
+      id="editForm"
+      th:action="@{/editProfile}"
+      method="post"
+      style="display: none"
+    >
+      <input
+        type="text"
+        id="editUsername"
+        name="username"
+        th:value="${user.username}"
+      />
+      <input type="text" id="editEmail" name="email" th:value="${user.email}" />
+      <input
+        type="password"
+        id="editPassword"
+        name="password"
+        th:value="${user.password}"
+      />
+      <button type="submit">Save</button>
+    </form>
+    <script>
+      document
+        .getElementById("editButton")
+        .addEventListener("click", function () {
+          document.getElementById("username").style.display = "none";
+          document.getElementById("email").style.display = "none";
+          document.getElementById("password").style.display = "none";
+          document.getElementById("editButton").style.display = "none";
+          document.getElementById("editForm").style.display = "block";
+        });
+    </script>
+  </body>
+</html>

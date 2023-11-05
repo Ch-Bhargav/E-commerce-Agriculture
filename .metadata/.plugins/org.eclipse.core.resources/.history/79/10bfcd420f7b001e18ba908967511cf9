@@ -1,0 +1,30 @@
+package com.example.sdp.controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.example.sdp.entity.CartItem;
+import com.example.sdp.service.CartService;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/cart")
+public class CartController {
+    @Autowired
+    private CartService cartService;
+
+    @GetMapping
+    public List<CartItem> getCart() {
+        return cartService.getCart();
+    }
+
+    @PostMapping("/add")
+    public void addToCart(@RequestParam String id, @RequestParam String name, @RequestParam double price) {
+        cartService.addToCart(id, name, price);
+    }
+
+    @DeleteMapping("/remove")
+    public void removeFromCart(@RequestParam String id) {
+        cartService.removeFromCart(id);
+    }
+}

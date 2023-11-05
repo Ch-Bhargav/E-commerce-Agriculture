@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Add your CSS and other head content here -->
+    <style>
+      /* Custom CSS for the list format */
+      .container {
+        background-color: #0e2433;
+        color: #fff;
+        padding: 20px;
+      }
+
+      /* Style for the cart item list */
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .cart-item-img {
+        max-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div th:include="navbar"></div>
+    <div class="container mt-5">
+      <div class="center-content">
+        <h2>Your Cart</h2>
+
+        <!-- Check if the cart is empty -->
+        <p class="empty-cart" th:if="${cartItems.isEmpty()}">
+          Your cart is empty.
+        </p>
+
+        <!-- Display cart items as a list -->
+        <ul th:if="${not cartItems.isEmpty()}" class="cart-list">
+          <li th:each="cartItem : ${cartItems}" class="cart-item">
+            <img
+              th:if="${cartItem.category == 'Dairy Products'}"
+              th:src="@{/css/images/dairy.jpeg}"
+              class="cart-item-img"
+              alt="Product Image"
+            />
+            <img
+              th:if="${cartItem.category == 'Fruits'}"
+              th:src="@{/css/images/fruits.jpeg}"
+              class="cart-item-img"
+              alt="Product Image"
+            />
+            <img
+              th:if="${cartItem.category == 'Vegetables'}"
+              th:src="@{/css/images/download.jpeg}"
+              class="cart-item-img"
+              alt="Product Image"
+            />
+            <div class="cart-item-details">
+              <h5 th:text="${cartItem.name}"></h5>
+              <p th:text="${cartItem.description}"></p>
+              <p th:text="'Price: $' + ${cartItem.price}"></p>
+            </div>
+            <a
+              th:href="@{'/removeFromCart/' + ${cartItem.id}}"
+              class="btn btn-danger"
+              >Remove</a
+            >
+          </li>
+        </ul>
+
+        <!-- Display total price and checkout button -->
+        <p class="total-price" th:text="'Total Price: $' + ${totalPrice}"></p>
+        <a th:href="@{/pay}">
+          <button class="checkout-button">Check Out</button>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .card {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+<div th:include="navbar"></div>
+
+
+
+<div class="mt-5">
+  <br>
+  <h2 style="color:#655555; text-align: center"  >Dairy Products</h2>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div th:each="product : ${dairyProducts}" class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card">
+          <img src="/css/images/dairy.jpeg" class="card-img-top" alt="Vegetables">
+          <div class="card-body">
+            <h5 th:text="${product.name}" class="card-title"></h5>
+            <p th:text="${product.description}" class="card-text"></p>
+            <p th:text="'Price: $' + ${product.price}" class="card-text"></p>
+            <a th:if="${session.userRole == 'Admin'}" th:href="@{'/editProduct/' + ${product.id}}" class="btn btn-primary">Edit</a>
+            <a th:if="${session.userRole == 'Admin'}" th:href="@{'/deleteProduct/' + ${product.id}}" class="btn btn-danger">Delete</a>
+            <a th:if="${session.userRole == 'User'}" th:href="@{'#' + ${product.id}}" class="btn btn-primary">Buy</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div th:include="footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Page</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Assistant:400,700"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: #f5eec8;
+        font-family: Assistant, sans-serif;
+        display: flex;
+        min-height: 90vh;
+      }
+
+      .login {
+        color: #f5eec8;
+        background: #555843;
+        margin: auto;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2),
+          0px 10px 20px rgba(0, 0, 0, 0.3), 0px 30px 60px 1px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        padding: 50px;
+      }
+
+      .login .head {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .login .head .company {
+        font-size: 2.2em;
+      }
+
+      .login .msg {
+        text-align: center;
+      }
+
+      .login .form input[type="text"].text {
+        border: none;
+        background: none;
+        box-shadow: 0px 2px 0px 0px rgb(34, 106, 230);
+        width: 100%;
+        color: white;
+        font-size: 1em;
+        outline: none;
+      }
+
+      .login .form .text::placeholder {
+        color: #d3d3d3;
+      }
+
+      .login .form input[type="password"].password {
+        border: none;
+        background: none;
+        box-shadow: 0px 2px 0px 0px white;
+        width: 100%;
+        color: white;
+        font-size: 1em;
+        outline: none;
+        margin-bottom: 20px;
+        margin-top: 20px;
+      }
+
+      .login .form .password::placeholder {
+        color: #d3d3d3;
+      }
+
+      .login .form .btn-login {
+        background: none;
+        text-decoration: none;
+        color: #f5eec8;
+        box-shadow: 0px 0px 0px 2px #f5eec8;
+        border-radius: 3px;
+        padding: 5px 2em;
+        transition: 0.5s;
+      }
+
+      .login .form .btn-login:hover {
+        background: #f5eec8;
+        color: dimgray;
+        transition: 0.5s;
+      }
+
+      .login .forgot {
+        text-decoration: none;
+        color: #f5eec8;
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="login" id="login">
+      <div class="head">
+        <h1 class="company">AgriApp</h1>
+      </div>
+      <p class="msg">Welcome back</p>
+      <div class="form">
+        <form th:action="@{/loginInfo}" method="POST">
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            class="text"
+            id="username"
+            required
+          /><br />
+          <!--            <input type="text" name="username" placeholder="username" class="text" />-->
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            class="password"
+          /><br />
+          <!--            <a href="#" class='btn-login' id='do-login' >Login</a>-->
+          <button type="submit" class="btn-login">Login</button>
+          <a href="/" class="forgot">Home</a><br />
+          <a href="/" class="forgot">Forgot?</a>
+        </form>
+      </div>
+    </section>
+    <footer></footer>
+    <!-- Reference the JavaScript file from the 'templates' directory -->
+    <script th:src="@{/static/css/script.js}"></script>
+  </body>
+</html>

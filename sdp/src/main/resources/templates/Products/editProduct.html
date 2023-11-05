@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+    body{
+      background: #f5eec8 !important;
+    }
+  </style>
+
+<body>
+<div th:include="navbar"></div>
+
+<div class="container mt-5">
+  <br>
+  <h2 style="color:#504a4a; text-align: center">Edit Product</h2>
+  <hr>
+  <form th:action="@{/updateProduct}" method="post" th:object="${product}">
+
+  <div class="form-group">
+      <input type="text" class="form-control" th:field="*{name}" placeholder="Product Name" required>
+    </div>
+
+    <div class="form-group">
+      <input type="number" class="form-control" th:field="*{price}" placeholder="Price" required>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" th:field="*{category}" placeholder="Category" required>
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" rows="4" th:field="*{description}" placeholder="Description" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Product</button>
+  </form>
+</div>
+
+<div th:include="footer"></div>
+
+</body>
+</html>

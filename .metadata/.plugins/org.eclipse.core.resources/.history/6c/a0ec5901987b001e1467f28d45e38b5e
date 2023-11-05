@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Page</title>
+</head>
+<body>
+    <div th:include="navbar"></div>
+    <hr>
+
+    <div class="container">
+        <h1>Your Cart</h1>
+
+        <!-- Check if the cart is empty -->
+        <p th:if="${cartItems.isEmpty()}">Your cart is empty.</p>
+
+        <!-- Display cart items if the cart is not empty -->
+        <ul th:if="${not cartItems.isEmpty()}">
+            <li th:each="cartItem : ${cartItems}" class="cart-item">
+                <img th:src="@{${cartItem.productImageUrl}}" alt="Product Image" class="cart-item-img">
+                <div class="cart-item-details">
+                    <h3 th:text="${cartItem.productName}"></h3>
+                    <p th:text="${cartItem.productDescription}"></p>
+                    <p th:text="'Price: $' + ${cartItem.productPrice}"></p>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Display total price -->
+        <p th:if="${not cartItems.isEmpty()}" class="total-price">
+            Total Price: $<span th:text="${totalPrice}"></span>
+        </p>
+    </div>
+</body>
+</html>

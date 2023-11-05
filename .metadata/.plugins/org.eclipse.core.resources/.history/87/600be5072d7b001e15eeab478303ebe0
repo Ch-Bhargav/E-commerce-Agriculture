@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="navbar" th:include="navbar"></div>
+<br>
+<hr>
+
+<h3 style="align-items: center">Vegetable Section</h3>
+</body>
+</html>

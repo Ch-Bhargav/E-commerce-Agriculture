@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Payment Page</title>
+  </head>
+  <body>
+    <h1>Payment Page</h1>
+
+    <form
+      th:action="@{/processPayment}"
+      th:object="${paymentForm}"
+      method="post"
+    >
+      <label for="total">Total Amount: $</label>
+      <input type="number" th:field="*{total}" step="0.01" required /><br />
+
+      <label for="currency">Currency:</label>
+      <select th:field="*{currency}" required>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <!-- Add other currency options as needed --></select
+      ><br />
+
+      <label for="description">Description:</label>
+      <input type="text" th:field="*{description}" required /><br />
+
+      <button type="submit">Proceed to Payment</button>
+    </form>
+  </body>
+</html>

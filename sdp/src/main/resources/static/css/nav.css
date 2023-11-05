@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #555843;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    font-family: 'cursive', cursive; /* Use a custom font here */
+    font-size: 36px; /* Increase the font size */
+    text-decoration: none;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add a text shadow */
+    letter-spacing: 2px; /* Adjust letter spacing */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+.nav-item {
+    font-size: 16px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}

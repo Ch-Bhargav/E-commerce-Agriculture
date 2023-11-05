@@ -1,0 +1,5 @@
+package com.example.sdp.entity;
+
+public class CartItem {
+
+}

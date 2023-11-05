@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #F5EEC8;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        th, td {
+            border: 1px solid #D0D4CA;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #D0D4CA;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn-edit, .btn-delete {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+<div th:include="navbar"></div>
+<!-- <h1 style="text-align: center;">User Profiles</h1> -->
+<h2>User Detials</h2>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.password}"></td>
+        <td>
+            <button class="btn-edit" th:attr="data-id=${user.id}">Edit</button>
+            <button class="btn-delete" th:attr="data-id=${user.id}">Delete</button>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

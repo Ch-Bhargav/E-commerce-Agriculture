@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      .card {
+        height: 300px; /* Reduced the height */
+        border-radius: 10px; /* Smaller border radius */
+        box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2); /* Softer box shadow */
+        transition: 0.3s;
+        margin-top: 30px; /* Reduced top margin */
+        overflow: hidden;
+        position: relative;
+      }
+
+      .card:hover {
+        box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+      }
+
+      .card-img-top {
+        height: 150px; /* Reduced image height */
+        object-fit: cover;
+        border-top-left-radius: 10px; /* Smaller border radius */
+        border-top-right-radius: 10px; /* Smaller border radius */
+      }
+
+      .card-body {
+        background-color: #f0f0f0; /* Changed background color to a lighter gray */
+        padding: 15px; /* Reduced padding */
+        border-bottom-left-radius: 10px; /* Smaller border radius */
+        border-bottom-right-radius: 10px; /* Smaller border radius */
+      }
+
+      /* Updated background color for the body */
+      body {
+        background-color: #f5eec8 !important; /* Changed to a different light gray */
+      }
+
+      /* Card title and text styles */
+      .card-title {
+        font-size: 20px; /* Slightly smaller font size */
+        color: #333; /* Darker text color */
+        margin-bottom: 5px; /* Smaller margin at the bottom */
+      }
+
+      .card-text {
+        font-size: 14px; /* Smaller font size */
+        color: #555;
+      }
+
+      /* Custom CSS for an orange button with black text */
+      .custom-button {
+        background-color: #ffa500; /* Orange background color */
+        color: #000000; /* Black text color */
+        padding: 10px 20px; /* Padding to adjust the button size */
+        border: none; /* Remove the default button border */
+        border-radius: 5px; /* Rounded button edges */
+        font-size: 16px; /* Font size */
+        font-weight: bold; /* Make the text bold */
+        cursor: pointer; /* Add a pointer cursor on hover */
+        text-transform: uppercase; /* Uppercase the text */
+        transition: background-color 0.3s ease; /* Smooth background color transition on hover */
+      }
+
+      .custom-button:hover {
+        background-color: #ff8c00; /* Darker orange color on hover */
+      }
+
+      /* Custom CSS for the About Us section */
+      .about-section {
+        background-color: #f9f9f9; /* Background color for the About Us section */
+        padding: 20px; /* Add padding to the section */
+        border-radius: 10px; /* Rounded corners */
+        margin-top: 20px; /* Add some spacing from the cards */
+      }
+
+      .about-section h2 {
+        font-size: 24px; /* Adjust the heading font size */
+        color: #333; /* Text color for the heading */
+        margin-bottom: 10px; /* Add margin below the heading */
+      }
+
+      .about-section p {
+        font-size: 16px; /* Adjust the paragraph font size */
+        color: #555; /* Text color for the paragraph */
+      }
+
+      .img-section img {
+        max-width: 50%; /* Set the maximum width of the image */
+        margin-right: 20px; /* Add spacing between the image and text */
+        border: 2px solid #333;
+        border-radius: 5px;
+      }
+
+      .img-section {
+        background-color: #f9f9f9; /* Background color for the About Us section */
+        padding: 20px; /* Add padding to the section */
+        border-radius: 10px; /* Rounded corners */
+        margin-top: 20px; /* Add some spacing from the cards */
+        display: flex;
+      }
+
+      .img-section h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .img-section p {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.4;
+      }
+
+      .img-section a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+
+      .img-section a:hover {
+        background-color: #45a049;
+      }
+
+      .products h1 {
+        font-family: Arial, sans-serif;
+        font-size: 36px;
+        color: #333;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div th:include="navbar"></div>
+
+    <!-- About us -->
+    <div class="container about-section" style="margin-top: 60px">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>About Our Farming Ecommerce</h2>
+          <p>
+            Welcome to FarmOS, your one-stop destination for all your farming
+            needs. We are passionate about agriculture and dedicated to bringing
+            the best farming products and services to your doorstep. Our mission
+            is to support farmers, gardeners, and agriculture enthusiasts by
+            providing top-quality supplies, expert advice, and a seamless online
+            shopping experience.
+          </p>
+          <p>
+            At FarmMart, we believe that sustainable farming practices are the
+            future. That's why we offer a wide range of products, from seeds and
+            fertilizers to tools and equipment, all carefully selected to help
+            you grow healthy crops and maintain your land efficiently.
+          </p>
+          <p>Why choose FarmMart for your farming needs?</p>
+          <ul>
+            <li>
+              High-Quality Products: We source our products from trusted
+              suppliers to ensure quality and reliability.
+            </li>
+            <li>
+              Expert Guidance: Our team of experienced farmers and agronomists
+              is here to assist you with valuable advice and recommendations.
+            </li>
+            <li>
+              Convenience: Shop from the comfort of your home and have your
+              farming essentials delivered right to your doorstep.
+            </li>
+            <li>
+              Sustainability: We promote eco-friendly farming practices and
+              offer sustainable solutions for a greener future.
+            </li>
+          </ul>
+          <p>
+            Join us in our mission to cultivate a healthier, more sustainable
+            planet. Whether you're a seasoned farmer or just starting your
+            gardening journey, FarmMart is here to support you every step of the
+            way.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container img-section">
+      <img src="css/images/download.jpeg" alt="Fresh Vegetables" />
+      <span
+        ><h2>About Vegetables</h2>
+        <p>
+          Vegetables are an essential part of a healthy diet. They come from
+          various sources, including farms and gardens. Fresh and locally
+          sourced vegetables are not only nutritious but also support local
+          farmers and reduce environmental impact.
+        </p>
+        <p>
+          If you want to explore our wide range of fresh vegetables, click the
+          link below:
+        </p>
+        <a href="/vegetables">Explore Vegetables</a>
+      </span>
+    </div>
+
+    <div class="container img-section">
+      <span>
+        <h2>About Fruits</h2>
+        <p>
+          Fruits are an essential part of a healthy diet. They come from various
+          sources, including farms and orchards. Fresh and locally sourced
+          fruits are not only nutritious but also support local farmers and
+          reduce environmental impact.
+        </p>
+        <p>
+          If you want to explore our wide range of fresh fruits, click the link
+          below:
+        </p>
+        <a href="/fruits">Explore Fruits</a>
+      </span>
+      <img src="css/images/fruits.jpeg" alt="Fresh Fruits" />
+    </div>
+
+    <div class="container img-section">
+      <img src="css/images/dairy.jpeg" alt="Fresh Dairy Products" />
+      <span>
+        <h2>About Dairy Products</h2>
+        <p>
+          Dairy products are an essential part of a healthy diet. They come from
+          various sources, including dairy farms. Fresh and locally sourced
+          dairy products are not only nutritious but also support local dairy
+          producers and reduce environmental impact.
+        </p>
+        <p>
+          If you want to explore our wide range of dairy products, click the
+          link below:
+        </p>
+        <a href="/dairy">Explore Dairy Products</a>
+      </span>
+    </div>
+
+    <div class="container img-section">
+      <span>
+        <h2>About Rice and Grains</h2>
+        <p>
+          Rice and grains are essential staples in many diets around the world.
+          They are sourced from various regions, including farms and fields.
+          Choosing locally sourced rice and grains not only provides essential
+          nutrition but also supports local farmers and reduces the carbon
+          footprint.
+        </p>
+        <p>
+          If you want to explore our wide range of rice and grains, click the
+          link below:
+        </p>
+        <a href="/rice-grains">Explore Rice and Grains</a>
+      </span>
+      <img src="css/images/grains.jpeg" alt="Fresh Rice and Grains" />
+    </div>
+
+    <div class="products"><h1>Our Products</h1></div>
+
+    <!-- Cards section -->
+    <div class="container" style="margin-bottom: 160px">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              src="/css/images/veggies.jpg"
+              class="card-img-top"
+              alt="Vegetables"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Vegetables</h5>
+              <p class="card-text">Explore our fresh vegetable selection.</p>
+              <a href="/vegetables" class="custom-button">View Vegetables</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              src="/css/images/fruits.jpeg"
+              class="card-img-top"
+              alt="Fruits"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Fruits</h5>
+              <p class="card-text">Discover our delicious fruit offerings.</p>
+              <a href="/fruits" class="custom-button">View Fruits</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              src="/css/images/dairy.jpeg"
+              class="card-img-top"
+              alt="Dairy"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Dairy Products</h5>
+              <p class="card-text">Check out our dairy product collection.</p>
+              <a href="/dairy" class="custom-button">View Dairy Products</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="products"><h1>Our Team</h1></div>
+
+    <div class="container" style="margin-bottom: 160px">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              src="/css/images/veggies.jpg"
+              class="card-img-top"
+              alt="Vegetables"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Vegetables</h5>
+              <p class="card-text">Explore our fresh vegetable selection.</p>
+              <a href="/vegetables" class="custom-button">View Vegetables</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              src="/css/images/fruits.jpeg"
+              class="card-img-top"
+              alt="Fruits"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Fruits</h5>
+              <p class="card-text">Discover our delicious fruit offerings.</p>
+              <a href="/fruits" class="custom-button">View Fruits</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <img
+              src="/css/images/dairy.jpeg"
+              class="card-img-top"
+              alt="Dairy"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Dairy Products</h5>
+              <p class="card-text">Check out our dairy product collection.</p>
+              <a href="/dairy" class="custom-button">View Dairy Products</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2023 FarmOs</p>
+        <p>
+          Designed by <a href="https://www.example.com" target="_blank">BC</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Footer section -->
+    <div th:include="footer"></div>
+  </body>
+</html>

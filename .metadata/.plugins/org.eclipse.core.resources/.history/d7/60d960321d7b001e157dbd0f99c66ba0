@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title></title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+        text-decoration: none;
+      }
+      body {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #f5eec8;
+      }
+      h2 {
+        text-align: center;
+        font-family: sans-serif;
+      }
+      .form-container form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        background-color: #555843;
+        padding: 30px;
+        border-radius: 30px;
+        box-shadow: 5px 5px 5px rgb(0, 0, 0);
+      }
+      .form-container form input {
+        padding: 0.6rem 1rem;
+        width: 300px;
+        border: none;
+        border-radius: 30px;
+      }
+      .form-container form button {
+        padding: 0.6rem 1.5rem;
+        border: none;
+        border-radius: 20px;
+      }
+
+      .form-container a {
+        text-decoration: none;
+        color: black;
+        float: right;
+        padding: 0.6rem 1.5rem;
+        border: none;
+        border-radius: 20px;
+      }
+
+      /* Style the switch container */
+      .custom-switch {
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      /* Style the switch input */
+      .custom-switch
+        .custom-control-input:checked
+        ~ .custom-control-label::before {
+        background-color: #007bff; /* Blue color when the switch is on */
+      }
+
+      /* Style the switch label */
+      .custom-switch .custom-control-label::before {
+        border: 1px solid #007bff; /* Border color of the switch */
+      }
+
+      /* Style the switch label text */
+      .custom-switch .custom-control-label {
+        font-weight: bold;
+        color: #333; /* Text color */
+      }
+
+      /* Style the switch label when it's clicked */
+      .custom-switch .custom-control-label:hover::before {
+        border-color: #0056b3; /* Border color on hover */
+      }
+
+      /* Style the switch label text when it's clicked */
+      .custom-switch .custom-control-label:hover {
+        color: #0056b3; /* Text color on hover */
+      }
+      .swithces {
+        color: #f5eec8;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Registration Form</h2>
+
+    <div class="form-container">
+      <form th:action="@{/saveUser}" th:object="${users}" method="post">
+        <input type="text" field="Name" placeholder="Name" />
+        <input type="text" th:field="*{username}" placeholder="username" />
+        <input type="email" th:field="*{email}" placeholder="email" />
+        <!-- 
+        <input type="text" th:field="*{role}" placeholder="Role" />-->
+        <div class="swithces">
+          <div class="custom-control custom-switch">
+            <input
+              type="radio"
+              class="custom-control-input"
+              id="userSwitch"
+              name="role"
+              th:field="*{role}"
+              th:value="'User'"
+            />
+            <label class="custom-control-label" for="userSwitch">User</label>
+          </div>
+
+          <div class="custom-control custom-switch">
+            <input
+              type="radio"
+              class="custom-control-input"
+              id="adminSwitch"
+              name="role"
+              th:field="*{role}"
+              th:value="'Admin'"
+            />
+            <label class="custom-control-label" for="adminSwitch">Admin</label>
+          </div>
+        </div>
+
+        <input
+          type="PhoneNumber"
+          field="PhoneNumber"
+          placeholder="PhoneNummber     "
+        />
+        <input type="password" th:field="*{password}" placeholder="password" />
+        <button type="submit" value="submit">Submit</button>
+        <a href="/">Home</a>
+      </form>
+    </div>
+  </body>
+</html>
